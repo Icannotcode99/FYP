@@ -17,19 +17,13 @@ class User(AbstractUser):
         return self.is_expert
 
 
-class MedicalExpert(models.Model):
-    age = models.IntegerField
+class expertdata(models.Model):
+    age = models.IntegerField()
     gender = models.CharField(max_length=30)
     country = models.TextField(max_length=30)
     prediction = models.TextField(max_length=30)
-    image = models.
+    image = models.ImageField()
 
-
-class ITExpert(models.Model):
-    age = models.IntegerField
-    gender = models.CharField(max_length=30)
-    country = models.TextField(max_length=30)
-    prediction = models.TextField(max_length=30)
 
     
     
