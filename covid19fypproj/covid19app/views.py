@@ -3,8 +3,10 @@ from django.http import HttpResponse
 from django.contrib.auth  import  authenticate , login 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm #add this
+from django.contrib.auth.forms import AuthenticationForm
+from .models import expertdata #add this
 from .forms import LoginForm
+from django.core import serializers
 
 
 # Create your views here.
@@ -78,4 +80,11 @@ def medical(request):
 def IT(request):
     return render(request, 'covid19app/IT.html')
 
+
+def displayData(request):
+    data = serializers.serialize("python", expertdata.objects.all())
+    context = {
+        'data':data,
+    }
+    return render(request, 'medical.html', context)
 
